@@ -2,21 +2,26 @@
 define('ruta',$_SERVER['DOCUMENT_ROOT']);
 require_once(ruta."/ae/controller/pda/cRubro.php");
 $data= array('clave'=>'','titulo'=>'','desc'=>'');
-if(isset($_REQUEST['u'])){
-  $data=listar_rubro($_REQUEST['u']);
-  print_r($data);
-} ?>
+?>
 <div class="">
-  <form  id="frmrubro">
+  <div class="row">
+    <div class="col" style="background-color: white;">
+    <form  id="frmrubro">
+    <div class="box-body" style="text-align: center;">
+        <div class="box-header with-border">
+            <h4 class="box-header with-border"><p style="text-align:center; font-size: 40px;">Actualizar Rubro</p></h4>
+        </div>
     <div class="box-body">
       <div class="form-group">
-        <label>Acrónimo de atributo de egreso (Completa con el número de atributo siguiente. Ver ejemplo) : </label>
+      <?php if(isset($_REQUEST['u'])){
+        $data=listar_rubro($_REQUEST['u']);
+  } ?> <br>
+        <label>Acrónimo del rubro : </label>
         <input type="text" name="rb_clave" id="rb_clave" class="form-control"  value="<?php echo $data['clave']; ?>" placeholder="Rubro" readonly>
-        <p class="help-block">ej. ISC_AE1, ISC_AE2, ISC_AE3... </p>
       </div>
       <div class="form-group">
         <label>Título del atributo </label>
-        <textarea name="titulo" id="titulo" class="form-control"  rows="2" placeholder="Titulo del rubro ..." ><?php echo $data['titulo']; ?></textarea>
+        <input name="titulo" id="titulo" class="form-control" placeholder="Titulo del rubro ..."  value="<?php echo $data['titulo']; ?>">
       </div>
       <div class="form-group">
         <label>Descripción del rubro (Grupo de actividades a desempeñar) </label>
@@ -27,27 +32,28 @@ if(isset($_REQUEST['u'])){
 
     <div class="box-footer">
       <?php if(isset($_REQUEST['u'])){ ?>
-      <button id="update" class="btn btn-primary btn-block">Actualizar Rubro</button>
-    <?php }else{
-     ?> 
-      <input type="hidden" name="alta" class="form-control" id="alta" value="1" placeholder="Atributo de egreso">
-      <button data-toggle="modal" data-target="#myModal" id="add" class="btn btn-primary btn-block">Registrar Atributo</button>
-      
-    <?php } ?>
+      <button id="update" class="btn btn-primary btn-block" style="width: 50%; float: right;" >Actualizar Rubro</button>
+      <?php }?>
+    </div>
     </div>
   </form>
+  </div>
+  </div>
 </div>  
+
   <script type="text/javascript">
     $(document).ready(function(){
 //Evento de Refistro de Carga horaria 
-
 $(document).on("click", "#update", function(e){
+  //prevenir que el evento se lanse solo
     e.preventDefault();  
+    //variable que nos permite manejar el switch
     var opcion = 1;
+    //Variables del formulario extraidas por el id
     let rb_clave = document.getElementById('rb_clave').value;   
     let titulo = document.getElementById("titulo").value;
     let desc =  document.getElementById("desc").value;
-    alert(titulo+rb_clave+desc);
+    //Ajax que permite el envio de parametros mediante post
     $.ajax({
         type : 'POST',
         url:'../controller/pda/pdacRubro.php',
@@ -60,9 +66,50 @@ $(document).on("click", "#update", function(e){
         dataType: 'JSON',
         success: function(data){
             console.log(data);
+            toastr["success"]("!Se realizo con exito¡","Actulización");
+            toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-bottom-right",
+              "preventDuplicates": true,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+}
+            
+            setTimeout(() => {
+              form('pda/rubros.php');
+            }, 4000);
+            
         },
         error: function(error){
           console.log(error);
+          toastr["error"]("!Error al insertar en la base de datos¡","Rubro no actulizado");
+          toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-bottom-right",
+              "preventDuplicates": true,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+}
         }
         
     });

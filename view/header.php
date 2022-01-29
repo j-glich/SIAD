@@ -29,8 +29,7 @@
   <link rel="stylesheet" href="../public/lib/css/bootstrap3-wysihtml5.min.css">
   <!-- Pace style -->
   <link rel="stylesheet" href="../public/lib/css/pace.min.css">
-  <link rel="stylesheet" href="../public/main.css">
-
+  <link rel="stylesheet" href="../public/css/toastr.min.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

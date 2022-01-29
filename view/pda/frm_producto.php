@@ -11,7 +11,7 @@ if(isset($_REQUEST['u'])){
   <form  id="frmproducto">
     <div class="box-body">
       <div class="form-group">
-        <label>Clave del atributo</label>
+        <label style="font-size: 40px;">Clave del atributo</label>
         <input type="text" name="pr_clave" id="pr_clave" class="form-control"  value="<?php echo $data['clave']; ?>" placeholder="Producto" readonly>
         <p class="help-block">ej. ISC_AE1, ISC_AE2, ISC_AE3... </p>
       </div>

@@ -1,36 +1,40 @@
 <?php
 define('ruta',$_SERVER['DOCUMENT_ROOT']);
 require_once(ruta."/ae/controller/pda/cCategoria.php");
-$data= array('clave'=>'','titulo'=>'','desc'=>'');
-
-if(isset($_REQUEST['u'])){
-  $data=listar_categoria($_REQUEST['u']);
-  print_r($data);
-} ?>
+?>
 <div class="">
-  <form  id="frmcategoria">
+  <div class="row">
+    <div class="col" style="background-color: white;">
+    <form  id="frmcategoria">
     <div class="box-body">
+      <div class="box-header with-border">
+          <h4 class="box-header with-border"><p style="text-align:center;">Actualizar categoría</p></h4>
+      </div>
+      <!-- Contiene  un arreglo con los datos de la fila seleccionada  -->
+      <?php $data= array('clave'=>'','titulo'=>'','desc'=>'');
+      if(isset($_REQUEST['u'])){
+        //Recupera los dados mediante una respuesta al servidor y manda a llamar auna funcion del archov cCategoria.
+        $data=listar_categoria($_REQUEST['u']);
+        } ?>
       <div class="form-group">
-        <label>Clave del Atributo </label>
-        <input type="text" name="cat_clave" id="cat_clave" class="form-control"  value="<?php echo $data['clave']; ?>" placeholder="Categoria" readonly>
-        <p class="help-block">ej. ISC_AE1, ISC_AE2, ISC_AE3... </p>
+        <label>Clave de la categoría </label>
+        <input type="text" name="cat_clave" id="cat_clave" class="form-control"  value="<?php echo $data['clave']; ?>" placeholder="Acrónimo de  categoria" readonly>
+        <p class="help-block">ej. DFG_DOCENCIA FRENTE A GRUPO.. </p>
       </div>
       <div class="form-group">
         <label>Título del atributo </label>
-        <textarea name="titulo" id="titulo" class="form-control"  rows="2" placeholder="Titulo de la categoria ..." ><?php echo $data['titulo']; ?></textarea>
+        <input name="titulo" id="titulo" class="form-control" placeholder="Titulo de la categoria ..." value="<?php echo $data['titulo']; ?>">
       </div>
       <div class="form-group">
         <label>Descripción de la categoria(Grupo de actividades a desempeñar) </label>
-        <textarea name="desc" id="desc" class="form-control" rows="3" placeholder="Descripción ..." ><?php echo $data['desc']; ?></textarea>
-      
+        <textarea name="desc" id="desc" class="form-control" rows="3" placeholder="Descripción ..." ><?php echo $data['desc']; ?></textarea>  
     <!-- /.box-body -->
-
     <div class="box-footer">
       <?php if(isset($_REQUEST['u'])){ ?>
         <input type="hidden" name="actualizar" id="actualizar" value="actualizar" class="form-control" rows="3">
       </div>
     </div>
-        <button data-toggle="modal" data-target="#myModal" name="update" id="update" class="btn btn-primary btn-block">Actualizar Categoria</button>
+        <button id="btn_upCategoria" class="btn btn-primary btn-block" style="width: 50%; float: right;">Actualizar Categoria</button>
     <?php }else{
      ?> 
        <input type="hidden" name="agregar" id="agregar" value="agregar" class="form-control" rows="3">
@@ -41,10 +45,86 @@ if(isset($_REQUEST['u'])){
       
     <?php } ?>
     </div>
-  </form>
+  </form>                                                     
+    </div>
+  </div>
 </div>
-    
-    
+<script type="text/javascript">
+$(document).ready(function(){
+//Evento de Refistro de Carga horaria 
+$(document).on("click", "#btn_upCategoria", function(e){
+  //prevenir que el evento se lanse solo
+    e.preventDefault();  
+    var opcion = 1;
+    //Variables del formulario extraidas por el id
+    let cat_clave = document.getElementById('cat_clave').value;   
+    let titulo = document.getElementById("titulo").value;
+    let desc =  document.getElementById("desc").value;
+    //Validacion de varianles vacias
+    if(cat_clave != "" && titulo !="" && desc != ""){
+      $.ajax({
+        type : 'POST',
+        url:'../controller/pda/coCategoria.php',
+        data: {
+            cat_clave : cat_clave,
+            titulo:titulo,
+            desc:desc,
+            opcion: opcion
+        }, success: function(){
+            toastr["success"]("Categoría modificada ", "Actualización exitosa")
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+              }
+            
+            setTimeout(() => {
+              form('pda/categoria.php');
+            }, 4000);
+        },
+        error: function(error){
+          console.log(error);
+        }
+        
+    });
+    }else{
+      toastr["error"]("Favor de insertar todos los campos ", "Campos vacíos ")
+        toastr.options = {
+              "closeButton": false,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": true,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+        }
+    }
+  
+
+});
+});
+  </script>
+    <!--
 <script type="text/javascript">
   $("#update").click(function(){
     $.ajax({
@@ -91,3 +171,4 @@ if(isset($_REQUEST['u'])){
 	});
 
 </script>
+-->

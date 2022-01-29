@@ -4,7 +4,6 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>	
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php
-  define('ruta',$_SERVER['DOCUMENT_ROOT']);
   //include('../config/routes.php');
   require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cCargaHoraria.php");
 

@@ -269,6 +269,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../public/lib/js/demo.js"></script>
 <script src="../public/js/functions.js"></script>
+<!-- Libreria para el uso de alertas -->
+<script src="../public/js/toastr.min.js"></script>
 <!-- PACE -->
 <script src="../public/lib/js/pace.min.js"></script>
 <script src="../public/lib/js/Chart.js" charset="utf-8"></script>
