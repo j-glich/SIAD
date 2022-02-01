@@ -25,7 +25,7 @@ $data= array('clave'=>'','titulo'=>'','desc'=>'');
       </div>
       <div class="form-group">
         <label>Descripción del rubro (Grupo de actividades a desempeñar) </label>
-        <textarea name="desc" id="desc" class="form-control" rows="3" placeholder="Descripción ..." ><?php echo $data['desc']; ?></textarea>
+        <textarea name="desc" id="desc" class="form-control" rows="4" placeholder="Descripción ..." ><?php echo $data['desc']; ?></textarea>
       </div>
     </div>
     <!-- /.box-body -->
@@ -63,9 +63,7 @@ $(document).on("click", "#update", function(e){
             desc:desc,
             opcion: opcion
         },
-        dataType: 'JSON',
-        success: function(data){
-            console.log(data);
+        success: function(){
             toastr["success"]("!Se realizo con exito¡","Actulización");
             toastr.options = {
               "closeButton": false,
@@ -84,11 +82,9 @@ $(document).on("click", "#update", function(e){
               "showMethod": "fadeIn",
               "hideMethod": "fadeOut"
 }
-            
             setTimeout(() => {
               form('pda/rubros.php');
-            }, 4000);
-            
+            }, 4000);           
         },
         error: function(error){
           console.log(error);

@@ -19,18 +19,16 @@ $user=200;
   switch ($opcion) {
     //Primer caso de consulta sera actulizar los rubros ya que no realizaba la inserccion de datos
     case '1':
-      //Variable ip del usuario obtenida con la variable global 
-        //Conforme ala codigo de mRubro.php el campo de UP_ACTIVO de ser = "";
-        $activo = "";
-        //Creamos  una varivale sql que contiene el String que ejecutara la llamada al procedimiento alamacenado de la update
-        $sql = "call sp_up_rubro('$rb_clave','$titulo','$desc','$activo','$ip_adress','$user');";
-        $stmt = $conexion->query($sql);
     break;
     case '2':
-      $sql = "call sp_in_rubro('$rb_clave','$titulo','$desc','$ip_adress','$user');";
-      $stmt = $conexion->query($sql);
-      //Listando  la actulizacion del todos los rubros con actulizacion al id que seleccion anteriormente
-    break;
+        //Variable ip del usuario obtenida con la variable global 
+          //Conforme ala codigo de mRubro.php el campo de UP_ACTIVO de ser = "";
+          //Creamos  una varivale sql que contiene el String que ejecutara la llamada al procedimiento alamacenado de la update
+          $sql = "call sp_in_subcategoria('$subcat_clave','$cat_clave','$titulo','$desc','$ip_adress','$user');";
+          $stmt = $conexion->query($sql);
+          echo $stmt;
+      break;
+
 }
 //Cerramos la conexion
 $conexion = null;

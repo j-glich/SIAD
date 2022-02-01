@@ -1,48 +1,35 @@
 <?php
-  require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cAsignacionActividad.php");
-  $cve_docente = $_REQUEST['cve_docente'];
+  //require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cAsignacionActividad.php");
   //echo $cve_docente;
-  $datos= listar_producto();
-?>
+  //$datos= listar_producto();
+  try {
+    require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/config/newcnx.php");
+  } catch (\Exception $e) {
+    require_once("../config/newcnx.php");
+  }
+  $cla_docente = $_GET["cve_docente"];
+  $sp_cargaH = $_GET["sp_cargaH"];
+  $sub =explode('-', $sp_cargaH);
+  $num_productos = sizeof($sub);
+  for ($i=0; $i < $num_productos; $i++) { 
+     print_r($sub[$i]);
+  }
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+
+$sql = "call sp_li_producto();";
+$result=$conexion->query($sql);
+while($row = $result->fetch_assoc()){
+  $new_array[] = $row; // Inside while loop
+}
+ print_r($new_array);     
+  ?>
 <div class="box box-solid">
   <div class="box-header with-border">
     <h4 class="box-header with-border"><p style="text-align:center;">Asignacion Actividades</p></h4>
   </div>
   <!-- /.box-header -->
   <div class="box-body "  style="aling: center;" >
-  <form name="frmAsignacionActividad">
-    <table class="table table-striped" color="black">
-      <tbody>
-        <tr>
-        <thead class="thead-light">
-        <th style="width: 30%;" >
-         Clave Producto
-        </th>
-
-      </tr>
-        <table class="table table-sm table-striped table-hover" id="cargaSerializada">
-        
-          <th style="width: 30%;" ></th>    <!-- Un campo -->
-          </thead>
-          <tr>
-        <?php 
-     
-          foreach( $datos as $subs){
-        ?>
-          <td style="width: 30%">
-          <input name="<?php echo $subs['clave']; ?>-chk" type="checkbox" id="<?php echo $subs['clave']; ?>-chk" value="<?php echo $subs['clave']; ?>"  onchange="comprobar(this);"/>
-          <label for="<?php echo $subs['clave']; ?>-chk"><?php echo $subs['titulo']; ?></label>
-          </td>
-           
-          </tr>
-        <?php } 
-        ?>
-
-         
-      </tbody>
-      
-        </table>
-        <br>
     <table class="table table-striped">
       <thead style="width: 100%">
         <th>Asignacion de actividad particular a docente                                         </th>
@@ -53,7 +40,7 @@
         <?php 
           foreach( $datos as $filas_D){  
         ?>
-         <option value="<?php echo $filas_D['clave']; ?>"></option>   
+         <option value="<?php echo $filas_D['subclave']; ?>"><?php echo $filas_D['subclave']; ?></option>   
 
         <?php } 
         ?>
@@ -73,7 +60,7 @@
         <?php 
           foreach( $datos as $filas_D){  
         ?>
-         <option value="<?php echo $filas_D['clave']; ?>"></option>   
+         <option value="<?php echo $filas_D['clave']; ?>"><?php echo $filas_D['clave']; ?></option>   
 
         <?php } 
         ?>

@@ -28,7 +28,7 @@ $datos = listar_categorias();
         <tr style="text-align: center;  font-size: 20px;">
           <th style="width: 10%;">id_categoria</th>
           <th style="width: 25%;">Titulo</th>
-          <th style="width: 50%;">Descripción</th>
+          <th style="width: 45%;">Descripción</th>
           <th style="width: 15%;" >Acciones</th>
         </tr>
         <?php 

@@ -12,9 +12,9 @@ try {
       $ip_adress="127.0.0.1";
     //Actualizar el valor del usuario tomando el valor de la sesión
       $user=200;
-    $stmt= "call sp_in_actividad('$cve_docente', '$cve_pr', '$periodo', '$hrs_pr', '$fec_prog' '$ip_adress',$user)";
+    //$stmt= "call sp_in_actividad('$cve_docente', '$cve_pr', '$periodo', '$hrs_pr', '$fec_prog' '$ip_adress',$user)";
    // 
-    $result = ejecutarConsulta($stmt);
+ //   $result = ejecutarConsulta($stmt);
    // echo " Se ha actualizado";
 
   }
@@ -23,16 +23,13 @@ try {
     $ip_adress= $_SERVER['REMOTE_ADDR'];
     if($ip_adress=='::1')
       $ip_adress="127.0.0.1";
-
       $stmt= "CALL sp_li_producto()";
-
-
   $result = execQuery($stmt);
   //echo '***'.$result -> num_rows;
   $productos = array();
   //$rubros= array('clave'=>'','titulo'=>'','desc'=>'');
   foreach( $result as $row){
-    $productos[]=array('clave'=>$row["PR_CVE"],'titulo'=>$row["PR_TITULO"],'desc'=>$row["PR_DESCRIPCION"]);
+    $productos=array('clave'=>$row["PR_CVE"],'subclave'=>$row['PR_SCAT_CVE'],'titulo'=>$row["PR_TITULO"],'desc'=>$row["PR_DESCRIPCION"]);
   }
   return $productos;
   }

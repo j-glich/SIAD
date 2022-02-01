@@ -51,9 +51,7 @@ e.preventDefault();
             desc:desc,
             opcion: opcion
         },
-        dataType: 'JSON',
-        success: function(data){
-            console.log(data);  
+        success: function(){
         toastr["success"]("¡Exito!","Rubro registrado");
         toastr.options = {
             "closeButton": false,
@@ -80,29 +78,28 @@ e.preventDefault();
         error: function(error){
           console.log(error);
           toastr["warning"]("Usar otro nombre de acrónimo", "Acrónimo duplicado")
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": true,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
     }
-        
     });
     }else{
         toastr["error"]("¡Error campos vacios!","Rubro no registrado");
-          toastr.options = {
+        toastr.options = {
             "closeButton": false,
             "debug": false,
             "newestOnTop": false,
@@ -120,7 +117,6 @@ toastr.options = {
             "hideMethod": "fadeOut"
 }
     }
-    
 });
 });
     </script>

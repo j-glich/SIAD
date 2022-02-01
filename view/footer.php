@@ -244,6 +244,7 @@
 <!-- Morris.js charts -->
 <script src="../public/lib/js/raphael.min.js"></script>
 <script src="../public/lib/js/morris.min.js"></script>
+<script src='https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js'> </script>
 <!-- Sparkline -->
 <script src="../public/lib/js/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->

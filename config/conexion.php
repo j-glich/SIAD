@@ -66,10 +66,6 @@ function clearStoredResults($mysqli_link){
       }
   }
   
-
-
- 
-
   function execQueryID($sql){
     global $conexion;
      $conexion->query($sql);

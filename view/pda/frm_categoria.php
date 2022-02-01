@@ -19,7 +19,6 @@ require_once(ruta."/ae/controller/pda/cCategoria.php");
       <div class="form-group">
         <label>Clave de la categoría </label>
         <input type="text" name="cat_clave" id="cat_clave" class="form-control"  value="<?php echo $data['clave']; ?>" placeholder="Acrónimo de  categoria" readonly>
-        <p class="help-block">ej. DFG_DOCENCIA FRENTE A GRUPO.. </p>
       </div>
       <div class="form-group">
         <label>Título del atributo </label>
@@ -27,7 +26,7 @@ require_once(ruta."/ae/controller/pda/cCategoria.php");
       </div>
       <div class="form-group">
         <label>Descripción de la categoria(Grupo de actividades a desempeñar) </label>
-        <textarea name="desc" id="desc" class="form-control" rows="3" placeholder="Descripción ..." ><?php echo $data['desc']; ?></textarea>  
+        <textarea name="desc" id="desc" class="form-control" rows="4" placeholder="Descripción ..." ><?php echo $data['desc']; ?></textarea>  
     <!-- /.box-body -->
     <div class="box-footer">
       <?php if(isset($_REQUEST['u'])){ ?>

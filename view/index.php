@@ -16,7 +16,9 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
+
   <section class="content-header">
+
     <section id="alerta">
     </section>
   </section>
@@ -29,6 +31,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
 <?php  require_once ("footer.php");
 //}
  ?>
