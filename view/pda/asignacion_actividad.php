@@ -10,6 +10,7 @@
   //obtenemos las variables que se mandand des de carga horaria
   $cla_docente = $_GET["cve_docente"];
   $sp_cargaH = $_GET["sp_cargaH"];
+  $sp_horas = $_GET["sp_horas"];
   //convertir String en un arreglo que lo separa por '-'
   $sub =explode('-', $sp_cargaH);
   //Obtenemos el tamanio del arreglo 
@@ -93,6 +94,7 @@ foreach( $new_array as $row){
 <script>
 function verificar(obj){
   //console.log(obj.id);
+  var arrayhoras= <?php echo json_encode($sp_horas);?>;
   var clv_docente  = <?php echo $cla_docente ?>;
   var objeto = obj.id;
   var product = objeto.substr(0, 4);
