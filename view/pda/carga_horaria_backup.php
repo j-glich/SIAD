@@ -161,7 +161,6 @@ $("#addCargaH").click(function(){
                         }
      });
 	});
-*/
 </script>
 
 

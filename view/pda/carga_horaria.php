@@ -123,6 +123,7 @@ var cantidad = 0;
 $(document).on("click", "#addCargaH", function(e){
     e.preventDefault();     
     var sp_cargaH ='';
+    var sp_horas ='';
   for (i=0;i<document.frmCargaHoraria.elements.length;i++){
       if(document.frmCargaHoraria.elements[i].type == "checkbox"){
         if (document.frmCargaHoraria.elements[i].checked){
@@ -132,8 +133,10 @@ $(document).on("click", "#addCargaH", function(e){
                     cantidad+= parseInt(valor);
                       if(sp_cargaH === ''){
                         sp_cargaH = scat;
+                        sp_horas =  valor;
                       }else{
                         sp_cargaH +='-' + scat;
+                        sp_horas +='-' + valor;
                   
               }  
           }
@@ -142,9 +145,9 @@ $(document).on("click", "#addCargaH", function(e){
       document.getElementById('total_hrs').value = cantidad;
       document.getElementById('carga').value = sp_cargaH;
       clave_docente = document.getElementById('cve_docente').value; 
-      form('pda/asignacion_actividad.php?cve_docente='+clave_docente+'&sp_cargaH='+sp_cargaH);
+      form('pda/asignacion_actividad.php?cve_docente='+clave_docente+'&sp_cargaH='+sp_cargaH+ '&sp_horas='+sp_horas);
 
-      history.pushState(null, "","index.php?cve_docente="+clave_docente+'&sp_cargaH='+sp_cargaH);
+      history.pushState(null, "","index.php?cve_docente="+clave_docente+'&sp_cargaH='+sp_cargaH+'&sp_horas='+sp_horas);
       alert(cantidad);
       cantidad=0;
    // var carga = preprocesar();
