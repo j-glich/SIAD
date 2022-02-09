@@ -24,11 +24,26 @@
   </div>
 </div>
 
-<footer class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> 1.0
+<footer class="main-footer" style="height: 200PX;">
+
+<div class="row">
+  <div class="col" style="text-align: center;">
+  <img src="../public/img/hidalgo.png" alt="MAPA" style="height: 150px;">
   </div>
-  <strong> <a href="https://www.isc.itsoeh.edu.mx">Ing. Sistemas Computacionales</a>.</strong>
+  <div class="col" style="text-align: center;">
+  Dirección: <br>
+Paseo del Agrarismo 2000.<br>
+Carr. Mixquiahuala - Tula, km 2.5<br>
+Mixquiahuala de Juárez, Hidalgo, C.P. 42700<br>
+ Contacto<br>
+01 (738) 73 54000<br>
+  </div>
+  <div class="col" style="text-align: center;">
+  <img src="../public/img/Ingsistemas.png" alt="MAPA" style="height: 150px;">
+  </div>
+</div>
+
+<strong> <a href="https://www.isc.itsoeh.edu.mx">Ing. Sistemas Computacionales</a>.</strong>
 
 </footer>
 
@@ -229,9 +244,7 @@
 <!-- ./wrapper -->
 
 
-<!-- jQuery 3 -->
-<script
-  src="../public/lib/js/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!--script src="../public/bower_components/jquery/dist/jquery.min.js"></script-->
 <!-- jQuery UI 1.11.4 -->
 <script src="../public/lib/js/jquery-ui.min.js"></script>
@@ -242,8 +255,10 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="../public/lib/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
-<script src="../public/lib/js/raphael.min.js"></script>
-<script src="../public/lib/js/morris.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 <script src='https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js'> </script>
 <!-- Sparkline -->
 <script src="../public/lib/js/jquery.sparkline.min.js"></script>
@@ -265,10 +280,6 @@
 <script src="../public/lib/js/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../public/lib/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../public/lib/js/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../public/lib/js/demo.js"></script>
 <script src="../public/js/functions.js"></script>
 <!-- Libreria para el uso de alertas -->
 <script src="../public/js/toastr.min.js"></script>

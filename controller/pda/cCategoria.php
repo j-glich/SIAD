@@ -1,11 +1,7 @@
 <?php
-  /* Bloque de control programado por jair para residencia profecional  */
-  $cat_clave = $_POST['cat_clave'];
-  $titulo = $_POST['titulo'];
-  $desc = ($_POST['desc']) ;
-  $opcion = ($_POST['opcion']);
+
  //define('ruta',$_SERVER['DOCUMENT_ROOT']);
- require_once($_SERVER['DOCUMENT_ROOT']."/ae/models/pda/mCategoria.php");
+ require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/models/pda/mCategoria.php");
 
 /**      ******************** */ 
  function listar_categorias(){

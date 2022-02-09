@@ -1,7 +1,7 @@
 <?php
   define('ruta',$_SERVER['DOCUMENT_ROOT']);
 
-  require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cCategoria.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/controller/pda/cCategoria.php");
 
   
 

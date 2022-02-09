@@ -1,6 +1,6 @@
 <?php
 
- require_once($_SERVER['DOCUMENT_ROOT']."/ae/models/pda/mRubro.php");
+ require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/models/pda/mRubro.php");
  /* Bloque de control para poder realizar la actualización de los registros */
 if(isset($_REQUEST['titulo'])){
   up_rubro($_REQUEST['rb_clave'], $_REQUEST['titulo'], $_REQUEST['desc']);

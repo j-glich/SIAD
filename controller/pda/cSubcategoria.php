@@ -1,6 +1,6 @@
 <?php
  //define('ruta',$_SERVER['DOCUMENT_ROOT']);
- require_once($_SERVER['DOCUMENT_ROOT']."/ae/models/pda/mSubcategoria.php");
+ require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/models/pda/mSubcategoria.php");
 
 
  /* Bloque de control para poder realizar la actualización de los registros */

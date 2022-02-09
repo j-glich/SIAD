@@ -29,9 +29,7 @@ $user=200;
           $sql = "call sp_in_producto('$id_producto','$subcat_clave','$titulo','$desc','$ip_adress','$user','$d_entrega');";
           $stmt = $conexion->query($sql);
       break;
-
-      case '3':
-        
+      case '3':  
           //Creamos  una varivale sql que contiene el String que ejecutara la llamada al procedimiento alamacenado de la update
           $sql = "call sp_li_calculo_fecha_producto('$id_cve');";
           $stmt = $conexion->query($sql);
@@ -39,10 +37,15 @@ $user=200;
             $new_array = $row; // Inside while loop
           }
       break;
+      case '4':
+        //Creamos  una varivale sql que contiene el String que ejecutara la llamada al procedimiento alamacenado de la update
+        $sql = "call sp_in_actividad2('$clv_docente','$clv_producto','$hr_producto','$fecha','$ip_adress','$user');";
+        $stmt = $conexion->query($sql);
+    break;
 
 }
 //Cerramos la conexion
-$conexion = null;
+$conexion->close();
 //y imprime el JSON en coonsola pra resivir en el frm_Rubro
 print json_encode($new_array, JSON_UNESCAPED_UNICODE)
 ?>

@@ -1,6 +1,6 @@
 <?php
 define('ruta',$_SERVER['DOCUMENT_ROOT']);
-require_once(ruta."/ae/controller/pda/cProducto.php");
+require_once(ruta."/new_ae/controller/pda/cProducto.php");
 $data= array('clave'=>'','titulo'=>'','desc'=>'');
 
 if(isset($_REQUEST['u'])){

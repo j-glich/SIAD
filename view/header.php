@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="../public/lib/css/pace.min.css">
   <link rel="stylesheet" href="../public/css/toastr.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -47,11 +48,14 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index" class="logo">
+    <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>IND</b></span>
+      <span class="logo-mini">
+      <b>IND</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>IND</b></span>
+      <span class="logo-lg">
+      <img src="../public/img/PDA2.png" alt="MAPA" style="height: 50px;">  
+      </span>
     </a>
     <!-- Header Navbar: style can be found in header.less 
     navbar navbar-expand-lg navbar-dark primary-color
@@ -81,7 +85,7 @@
             <a href="#" >
               <?php
               //define('ruta',$_SERVER['DOCUMENT_ROOT']);
-            
+
                 include_once '../includes/session.php';
                 include_once '../config/conexion.php';
 
@@ -91,8 +95,7 @@
                 $session->periodo('20213');
                 $session->area('ISC');
                   if(isset($_SESSION['user_id'])){
-
-               ?>
+              ?>
               <span class="hidden-xs"><?php echo $_SESSION['user_id']  ?></span>
             <?php } ?>
             </a>
@@ -110,11 +113,7 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      
-      
             <?php
                   echo '<ul class="sidebar-menu" data-widget="tree">
                   <li class="treeview">
@@ -130,16 +129,14 @@
                   echo '<li><a onclick="form(\''.'pda'.'/'.'categoria'.'.php\')" href="#"><i class="fa fa-clone"></i>Categorías</a></li>';              
                   echo '<li><a onclick="form(\''.'pda'.'/'.'subcategoria'.'.php\')" href="#"><i class="fa fa-clone"></i>Subcategorias</a></li>';           
                   echo '<li><a onclick="form(\''.'pda'.'/'.'producto'.'.php\')" href="#"><i class="fa fa-clone"></i>Producto</a></li>';           
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'carga_horaria'.'.php\')" href="#"><i class="fa fa-folder-open"></i>Carga Horaria</a></li>';
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'asignacion_actividad'.'.php\')" href="#"><i class="fa fa-check-square-o"></i>Asignación Actividad</a></li>';           
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'evaluación'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Evaluación</a></li>';           
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'cierre_evaluacion'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Subcaterorias</a></li>';
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'entrega_evidencia'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Entrega de evidencias</a></li>';              
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'constancia_cumplimiento'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'generar_pda_8'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
+                  echo '<li><a onclick="form(\''.'pda'.'/'.'carga_horaria2'.'.php\')" href="#"><i class="fa fa-folder-open"></i>Carga Horaria</a></li>';   
+                  echo '<li><a onclick="form(\''.'pda'.'/'.'reporte_de_actividad'.'.php\')" href="#"><i class="fa fa-address-card"></i>Registro de Actividad</a></li>';         
+                //  echo '<li><a onclick="form(\''.'pda'.'/'.'evaluación'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Evaluación</a></li>';           
+                //  echo '<li><a onclick="form(\''.'pda'.'/'.'cierre_evaluacion'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Subcaterorias</a></li>';
+                //  echo '<li><a onclick="form(\''.'pda'.'/'.'entrega_evidencia'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Entrega de evidencias</a></li>';              
+                 // echo '<li><a onclick="form(\''.'pda'.'/'.'constancia_cumplimiento'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
+                  //echo '<li><a onclick="form(\''.'pda'.'/'.'generar_pda_8'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
                   
-                
-
             ?>
               
           </ul>

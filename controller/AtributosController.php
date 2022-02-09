@@ -2,10 +2,10 @@
 
     if(isset($_REQUEST['desc'])&&isset($_REQUEST['atr'])){
       define('ruta',$_SERVER['DOCUMENT_ROOT']);
-      require_once($_SERVER['DOCUMENT_ROOT']."/ae/models/atributo.php");
+      require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/models/atributo.php");
       cambiaAtributo($_REQUEST['atr'],$_REQUEST['desc']);
     }else{
-      require_once($_SERVER['DOCUMENT_ROOT']."/ae/models/atributo.php");
+      require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/models/atributo.php");
     }
 
     function atributos_egreso(){

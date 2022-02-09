@@ -1,6 +1,6 @@
 <?php
   //include('../config/routes.php');
-  require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cRubro.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/controller/pda/cRubro.php");
 if(isset($_REQUEST['d']))
 {
   del_rubro($_REQUEST['d']);   

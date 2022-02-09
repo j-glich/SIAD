@@ -1,6 +1,6 @@
 <?php
   define('ruta',$_SERVER['DOCUMENT_ROOT']);
-  require_once(ruta."/ae/config/conexion.php");
+  require_once(ruta."/new_ae/config/conexion.php");
 
   if(!isset($_SESSION))
   { session_start(); }

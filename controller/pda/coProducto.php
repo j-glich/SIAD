@@ -11,6 +11,13 @@ if($opcion == 2){
 if($opcion == 3){
     $id_cve = $_POST['product'];
 }
+if($opcion == 4){
+    $clv_docente  =  $_POST['clv_docente']; 
+    $clv_producto  = $_POST['clv_producto'];
+    $hr_producto = $_POST['hr_producto'];
+    $fecha = $_POST['fecha'];
+
+}
 
 
 

@@ -7,12 +7,13 @@
   } catch (\Exception $e) {
     require_once("../config/newcnx.php");
   }
-  //obtenemos las variables que se mandand des de carga horaria
+  //obtenemos las variables que se mandand des de carga horaria en forma de string
   $cla_docente = $_GET["cve_docente"];
   $sp_cargaH = $_GET["sp_cargaH"];
   $sp_horas = $_GET["sp_horas"];
   //convertir String en un arreglo que lo separa por '-'
   $sub =explode('-', $sp_cargaH);
+  $sp_caHoras =explode('-', $sp_horas);
   //Obtenemos el tamanio del arreglo 
   $num_productos = sizeof($sub);
 // creamos la conexion a la base de datos 
@@ -41,15 +42,14 @@ foreach( $new_array as $row){
   <div class="box-body" >
   <div class="row">
     <div class="col" style="background-color: none;" >
-    <table class="table table-striped" color="black">
+    <table id="tablaproductos" class="table table-striped" color="black">
       <tbody>
         <tr>
         <thead class="thead-light">
         <th style="width: 10%;" >Opcion</th>
         <th style="width: 30%;" >Clave Producto</th>
         </tr>
-        <tr>
-            <?php 
+        <?php 
             //obetemos la longitud del arreglo mediante el metodo sizeof() el cual resive el arreglo productos 
             $t_productos = sizeof($productos);
             //Areglo que recorre por completo la tabla de productos 
@@ -60,7 +60,8 @@ foreach( $new_array as $row){
                 if($productos[$i]['PR_SCAT_CVE'] == $sub[$j]){
                   // 
             ?>
-                <td><input type="checkbox" id="<?php echo $productos[$i]['PR_CVE']; ?>-chk" value="<?php echo $productos[$i]['PR_CVE']; ?>"  onclick="verificar(this);"/></td>
+          <tr id="<?php echo $productos[$i]['PR_CVE'];?>">
+                <td><input name="<?php echo $j ?>-chk" type="checkbox" id="<?php echo $productos[$i]['PR_CVE']; ?>-chk" value="<?php echo $productos[$i]['PR_CVE']; ?>"  onclick="verificar(this);"/></td>
                 <td> <label id="lb<?php echo $productos[$i]['PR_CVE'];?>" name="<?php echo $productos[$i]['PR_CVE']; ?>" for="<?php echo $productos[$i]['PR_CVE']; ?>-chk"><?php echo $productos[$i]['PR_TITULO'];?></label></td>
           </tr> 
   <?php  
@@ -80,10 +81,10 @@ foreach( $new_array as $row){
         <p>Horas del Producto</p>
         <input type="text" id="hr_producto" style="width: 80%;"></input>
         <p>Evidencia a entregar: </p><input type="text" id="evidencia" style="width: 80%;"></input>
-        <p>Fecha de entrega: </p><input type="date" id='fecha' style="width: 80%;"></input>
-        <p>Descripcion del producto: </p><textarea id="desc" type="textarea" style="width: 80%;"></textarea>        
+        <p>Fecha de entrega: </p><input type="date" id='fecha' style="width: 80%;"></input>     
         <div class="card-body d-flex">
-          <button class="btn btn-success" id="cargarA">cargar actividad</button>
+          <button class="btn btn-success" id="cargarA">cargar actividad</button> &nbsp &nbsp &nbsp 
+          <button style="width: 30%;" class="btn btn-info" id="salir">Salir</button>
         </div>
   </div>
   </div>
@@ -94,10 +95,19 @@ foreach( $new_array as $row){
 <script>
 function verificar(obj){
   //console.log(obj.id);
-  var arrayhoras= <?php echo json_encode($sp_horas);?>;
+  // convetimos el arreglo que viene desde php a un json
+  var arrayhoras= <?php echo json_encode($sp_caHoras);?>;
+  console.log(arrayhoras);
+  //obtenemos la clave del docente desde php
   var clv_docente  = <?php echo $cla_docente ?>;
+  // obtenemos el input que ejecuto el metodo y obtenemos el id del input 
   var objeto = obj.id;
+  //Recortamos el input a modo de que obtegamos el id del producto
   var product = objeto.substr(0, 4);
+   // obtenemos el input que ejecuto el metodo y obtenemos el name en este caso sera una session de numero 0,1,2,3,4,5,6,7,8,9 depende el numerp de subcategorias enviadas
+  var id_hora = obj.name;
+  var auxhora = id_hora.substr(0, 2);
+  document.getElementById('hr_producto').value = arrayhoras[parseInt(auxhora)];
   var descrepcion = document.getElementById('lb'+product).innerHTML;
   var opcion=3;
   if (obj.checked){ 
@@ -128,26 +138,20 @@ $(document).on("click", "#cargarA", function(e){
     clv_docente = document.getElementById('cv_docente').value;
     clv_producto = document.getElementById('cv_producto').value;
     hr_producto = document.getElementById('hr_producto').value;
-    evidencia = document.getElementById('evidencia').value;
     fecha = document.getElementById('fecha').value;
-    desc = document.getElementById('desc').value;
-    if(clv_docente !="" && clv_producto != ""  && hr_producto !=""   && evidencia != "" && fecha !="" && desc != "" ){
+    if(clv_docente !="" && clv_producto != ""  && hr_producto !=""   && evidencia != "" && fecha !=""){
       $.ajax({
         type : 'POST',
         url:'../controller/pda/coProducto.php',
         data: {
             clv_docente : clv_docente ,
             clv_producto : clv_producto ,
-            evidencia : evidencia,
+            hr_producto: hr_producto,
             fecha: fecha,
             opcion: opcion
         },
         success:function (){
-  
-        }
-      });
-    }else{
-      toastr["error"]("Favor de insertar todos los campos ", "Campos vacíos ")
+          toastr["success"]("Actividad registrada", "Producto cargado correctamente");
             toastr.options = {
                 "closeButton": false,
                 "debug": false,
@@ -165,8 +169,21 @@ $(document).on("click", "#cargarA", function(e){
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
                 }
+        }
+      });
+      $('#'+clv_producto+'').remove();
+      document.getElementById('cv_docente').value = "";
+      document.getElementById('cv_producto').value = "";
+      document.getElementById('hr_producto').value = "";
+      document.getElementById('evidencia').value = "";
+      document.getElementById('fecha').value = "";
     }
+});
 
+$(document).on('click','#salir', function(e){
+  e.preventDefault();
+  form('pda/carga_horaria.php');
+  history.pushState(null, "","index.php");
 });
 });
 

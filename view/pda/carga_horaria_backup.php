@@ -1,7 +1,7 @@
 <?php
   define('ruta',$_SERVER['DOCUMENT_ROOT']);
   //include('../config/routes.php');
-  require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cCargaHoraria.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/controller/pda/cCargaHoraria.php");
 
 //Este código refleja la solución a que no este definida la variable sp_cargaH, por ello marca un escepción cuando no existe.
 //function getIfSet(&$value, $default = null)

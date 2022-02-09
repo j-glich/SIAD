@@ -1,7 +1,7 @@
 <?php
   define('ruta',$_SERVER['DOCUMENT_ROOT']);
   //include('../config/routes.php');
-  require_once($_SERVER['DOCUMENT_ROOT']."/ae/controller/pda/cProducto.php");
+  require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/controller/pda/cProducto.php");
   //include_once '../includes/session.php';
   //include_once '../includes/functions.php';
   //var_dump($rubros);

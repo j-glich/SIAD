@@ -1,7 +1,7 @@
 <?php
 
 try {
-    require_once($_SERVER['DOCUMENT_ROOT']."/ae/config/conexion.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/config/conexion.php");
   } catch (\Exception $e) {
     require_once("../config/conexion.php");
   }
@@ -12,7 +12,7 @@ try {
       $ip_adress="127.0.0.1";
     //Actualizar el valor del usuario tomando el valor de la sesión
       $user=200;
-      $periodo='20213';
+      $periodo='20221';
     $stmt= "call sp_in_carga_actividad_x_scat('$cargaH', '$cve_docente', '$periodo', '$ip_adress',$user)";
    //echo $stmt;
     $result = ejecutarConsulta($stmt);

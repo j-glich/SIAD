@@ -1,6 +1,6 @@
 <?php
 define('ruta',$_SERVER['DOCUMENT_ROOT']);
-require_once(ruta."/ae/controller/pda/cCategoria.php");
+require_once(ruta."/new_ae/controller/pda/cCategoria.php");
 ?>
 <div class="">
   <div class="row">

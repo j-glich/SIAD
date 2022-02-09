@@ -1,6 +1,6 @@
 <?php
 define('ruta',$_SERVER['DOCUMENT_ROOT']);
-require_once(ruta."/ae/controller/pda/cSubcategoria.php");
+require_once(ruta."/new_ae/controller/pda/cSubcategoria.php");
 $data= array('clave'=>'','titulo'=>'','desc'=>'');
 
 if(isset($_REQUEST['u'])){

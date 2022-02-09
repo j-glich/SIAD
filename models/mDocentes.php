@@ -1,7 +1,7 @@
 <?php
 
 try {
-    require_once($_SERVER['DOCUMENT_ROOT']."/ae/config/conexion.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/new_ae/config/conexion.php");
   } catch (\Exception $e) {
     require_once("../config/conexion.php");
   }
