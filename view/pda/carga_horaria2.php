@@ -27,25 +27,27 @@ $datos= listar_subcategoria();
    overflow: hidden;
 }
 
-
 #cargahoraria .card{
-width: 200px;
+width: 160px;
 height: auto;
 border-radius: 8px;
 box-shadow: 0 2px 2px rgba(0, 0,0,0.2);
 overflow: hidden;
-margin: 20px;
+margin: 6px;
 text-align: center;
 transition: all 0.25px;
 float: left;
 }
 #cargahoraria .card:hover{
-  transform: translate(-15px) ;
+  transform: translate(-5px) ;
   box-shadow: 0 12px 16px rgba(0, 0,0,0.2);
 }
 #cargahoraria .card h4{
   border-bottom: 4px solid black;
   background-color: black;
+}
+#cargahoraria .card p{
+  font-size: smaller;
 }
 </style>
 <form id="frmCargaHoraria" name="frmCargaHoraria" >
@@ -60,16 +62,25 @@ float: left;
   <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
 </svg>  
         <?php echo $subs['clave']?> </h4>
-        <input name="<?php echo $subs['clave']; ?>-chk" type="checkbox" style="position: relative; left: 50%; width: 16px; height: 16px;" id="<?php echo $subs['clave']; ?>-chk" value="<?php echo $subs['clave']; ?>"/>
+        <di class="row" style="height: 20px;">
+          <div class="col-1" style="">
+          <input name="<?php echo $subs['clave']; ?>-chk" type="checkbox" style=" width: 16px; height: 16px;" id="<?php echo $subs['clave']; ?>-chk" value="<?php echo $subs['clave']; ?>"/>
+          </div>
+        <div class="col">
+         <input  type="text" style="height: 20px;" onkeypress="return solonumeros(event)" name="<?php echo $subs['clave']; ?>" id="<?php echo $subs['clave']; ?>" readonly="true" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"aling="right"/>
+        </div>
+        </di>
         <p><?php echo $subs['titulo']?> </p>
-      
       </form>
       </div>
       <?php
           }
       ?>    
-      <button class="btn btn-info" style="height: 50px; width: 150px;" id="btnSiguiente">Siguiente</button>
+     <div style="position: relative; float: left; left: 50px;align-items: center;display: flex;   justify-content: center;">
+     <button class="btn text-white " style="height: 50px; width: 150px; background-color: black;" id="btnSiguiente">Siguiente</button>
+     </div>
 </div>
+
   <!-- /.box-body -->
 </div>
 <script>
@@ -123,7 +134,7 @@ $(document).on("click", "#btnSiguiente", function(e){
           }
         }
       }
-      form('pda/reporte_de_actividad.php?sp_Carga_Cat='+sp_cargaH);
+      form('pda/asignacion_actividadc.php?sp_Carga_Cat='+sp_cargaH);
       history.pushState(null, "","index.php?sp_Carga_Cat="+sp_cargaH);
     });
   });

@@ -13,9 +13,6 @@ $docentes = listar_docentes();
     <h4 class="box-header with-border"><p style="text-align:center; font-size: 40px;">Asignación de productos</p></h4>
     <div class="row">
       <div class="col">
-      <button id="activar_Pr" class="btn btn-danger">Activar productos</button>
-      </div>
-      <div class="col">
       <label for="lbl" style="font-size: 25px;"> Clave Docente</label>
             <select name="cve_docente" id="cve_docente" class="form-control"style="width: 100%; border: 2px solid black;"  value="<?php echo  $cve_docente;?>">
                 <?php 
@@ -32,7 +29,7 @@ $docentes = listar_docentes();
 <div class="box-body" >
 <div class="row">
     <div class="col" style="background-color: none;" >
-    <table id="tablaproductos" class="table table-striped" color="black">
+    <table id="tablaproductos" class="table table-striped border-primary" color="black">
         <tbody>
         <tr>
         <thead class="thead-dark" style="text-align: center;">
@@ -125,8 +122,7 @@ function verificar2(obj)
       document.getElementById(scat).readOnly = true;  
 }
 $(document).ready(function(){   
-  $(document).on("click", "#activar_Pr", function(e){
-    e.preventDefault();     
+
   for (i=0;i<document.frmCargaHoraria.elements.length;i++){
       if(document.frmCargaHoraria.elements[i].type == "checkbox"){
         document.frmCargaHoraria.elements[i].checked = true;
@@ -135,8 +131,7 @@ $(document).ready(function(){
         }
         }
       }
-    });
-
+  
     $(document).on("click", "#CargarH", function(e){
     e.preventDefault();     
     opcion = 1;
@@ -178,7 +173,7 @@ $(document).ready(function(){
     setTimeout(() => {
               form('pda/carga_horaria2.php');
               history.pushState(null, "","index.php?cve_docente="+clave_docente+'&sp_cargaH='+carga);
-            }, 4000);
+    }, 1000);
    
   
 });

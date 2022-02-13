@@ -54,12 +54,12 @@ try {
     //echo $stmt;
     $result = ejecutarConsulta($stmt);
    // echo " Se ha actualizado";
-
+   echo 'ok';
 
   }
 
 function liProductoXClave($clave){
-    $stmt= "call sp_li_pr_x_cve('$clave')";
+    $stmt= "call sp_li_pr_id('$clave')";
    // echo $stmt;
     $result = execQuery($stmt);
     foreach( $result as $row){

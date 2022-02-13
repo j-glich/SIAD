@@ -130,7 +130,7 @@
                   echo '<li><a onclick="form(\''.'pda'.'/'.'subcategoria'.'.php\')" href="#"><i class="fa fa-clone"></i>Subcategorias</a></li>';           
                   echo '<li><a onclick="form(\''.'pda'.'/'.'producto'.'.php\')" href="#"><i class="fa fa-clone"></i>Producto</a></li>';           
                   echo '<li><a onclick="form(\''.'pda'.'/'.'carga_horaria2'.'.php\')" href="#"><i class="fa fa-folder-open"></i>Carga Horaria</a></li>';   
-                  echo '<li><a onclick="form(\''.'pda'.'/'.'reporte_de_actividad'.'.php\')" href="#"><i class="fa fa-address-card"></i>Registro de Actividad</a></li>';         
+                  echo '<li><a href="#"><i class="fa fa-address-card"></i>Registro de Actividad</a></li>';         
                 //  echo '<li><a onclick="form(\''.'pda'.'/'.'evaluación'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Evaluación</a></li>';           
                 //  echo '<li><a onclick="form(\''.'pda'.'/'.'cierre_evaluacion'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Subcaterorias</a></li>';
                 //  echo '<li><a onclick="form(\''.'pda'.'/'.'entrega_evidencia'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Entrega de evidencias</a></li>';              
