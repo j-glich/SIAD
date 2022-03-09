@@ -258,7 +258,7 @@ Mixquiahuala de Juárez, Hidalgo, C.P. 42700<br>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src='https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js'> </script>
 <!-- Sparkline -->
 <script src="../public/lib/js/jquery.sparkline.min.js"></script>
@@ -283,9 +283,14 @@ Mixquiahuala de Juárez, Hidalgo, C.P. 42700<br>
 <script src="../public/js/functions.js"></script>
 <!-- Libreria para el uso de alertas -->
 <script src="../public/js/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- PACE -->
+<script src="../public/js/sb-admin-2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="../public/lib/js/pace.min.js"></script>
 <script src="../public/lib/js/Chart.js" charset="utf-8"></script>
+<script type="text/javascript" src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js'></script>
 <script type="text/javascript">
   $('document').ready(function(){
       $(document).ajaxStart(function() { Pace.restart(); });

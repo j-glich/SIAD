@@ -13,19 +13,16 @@ try {
       $ip_adress="127.0.0.1";
     $stmt= "CALL sp_li_docentes()";
      // echo $stmt;
-
- 
-
-  $result = execQuery($stmt);
-  //print_r($result);
-  $docentes = array();
-  //$docentes= array('clave'=>'','nombre'=>'');
+    $result = execQuery($stmt);
+    //print_r($result);
+    $docentes = array();
+    //$docentes= array('clave'=>'','nombre'=>'');
   foreach( $result as $row){
-    $docentes[]=array('clave'=>$row["cve"],'nombre1'=>$row["nom1"], 'nombre2'=>$row["nom2"], 'apellidoP'=>$row["ap_p"], 
-    'apellidoM'=>$row["ap_m"], 'grado'=>$row["grado"], 'cedula'=>$row["cedula"] );
+    $docentes[]=array('clave'=>$row["cve"],'nombre1'=>$row["nom1"],'grado'=>$row["grado"], 'cedula'=>$row["cedula"] );
   }
   // $result->free();
   return $docentes;
   }
+
 
 ?>

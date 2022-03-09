@@ -72,7 +72,6 @@ include_once 'includes/session.php';
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-
         <!-- /.col -->
         <div class="col-xs-12">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>

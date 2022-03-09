@@ -13,7 +13,6 @@
 //    return isset($value) ? $value : $default;
 //}
 //$p = getIfSet($_REQUEST['p']);
-$docentes = listar_docentes();
 $datos= listar_subcategoria();
 ?>
 <style>
@@ -54,7 +53,7 @@ float: left;
 <div id="cargahoraria" class="box box-solid">
   
 <?php foreach( $datos as $subs){     ?>
-      <div class="card text-white bg-info ">
+      <div class="card text-white bg-info " id="<?php echo $subs['clave']; ?>-chk"  onclick="card(this)">
       <i class="bi bi-bookmark-plus"></i>
         <h4 >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
@@ -62,14 +61,14 @@ float: left;
   <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
 </svg>  
         <?php echo $subs['clave']?> </h4>
-        <di class="row" style="height: 20px;">
-          <div class="col-1" style="">
-          <input name="<?php echo $subs['clave']; ?>-chk" type="checkbox" style=" width: 16px; height: 16px;" id="<?php echo $subs['clave']; ?>-chk" value="<?php echo $subs['clave']; ?>"/>
+        <div class="row" style="height: 20px;">
+          <div class="col-1">
+          <input name="<?php echo $subs['clave']; ?>" onclick="comprobar(this)" type="checkbox" style=" width: 16px; height: 16px;" id="<?php echo $subs['clave']; ?>-chk" value="<?php echo $subs['clave']; ?>"/>
           </div>
         <div class="col">
-         <input  type="text" style="height: 20px;" onkeypress="return solonumeros(event)" name="<?php echo $subs['clave']; ?>" id="<?php echo $subs['clave']; ?>" readonly="true" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"aling="right"/>
+         <input maxlength="3"  type="text" style="height: 20px;" required placeholder="Total de horas" onkeypress="return solonumeros(event)" name="<?php echo $subs['clave']; ?>" id="<?php echo $subs['clave']; ?>" readonly="true" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"aling="right"/>
         </div>
-        </di>
+        </div>
         <p><?php echo $subs['titulo']?> </p>
       </form>
       </div>
@@ -84,6 +83,50 @@ float: left;
   <!-- /.box-body -->
 </div>
 <script>
+$(document).ready(function(){
+$(document).on("click", "#btnSiguiente", function(e){
+    e.preventDefault();     
+    var sp_cargaH ='';
+    var sp_horas ='';      
+  for (i=0;i<document.frmCargaHoraria.elements.length;i++){
+      if(document.frmCargaHoraria.elements[i].type == "checkbox"){
+        if (document.frmCargaHoraria.elements[i].checked){
+            var check_obj = document.frmCargaHoraria.elements[i].id;
+            var cat = check_obj.substr(0, 3); 
+            var valor =  document.getElementById(cat).value;
+          
+                     if(sp_cargaH === ''){
+                        sp_cargaH = cat;
+                        if(valor.length == 1){
+                          sp_horas = '00'+valor;
+                        } 
+                        if(valor.length == 2){
+                          sp_horas = '0'+valor;
+                        } 
+                        if(valor.length == 3){
+                          sp_horas = valor;
+                        }
+                      }else{
+                        sp_cargaH +='-' + cat; 
+                        if(valor.length == 1){
+                          sp_horas += '-' +'00'+valor;
+                        } 
+                        if(valor.length == 2){
+                          sp_horas += '-' +'0'+valor;
+                        } 
+                        if(valor.length == 3){
+                          sp_horas += '-' +valor;
+                        }
+
+            
+            }
+          }
+        }
+      }
+      form('pda/asignacion_actividadc.php?sp_Carga_Cat='+sp_cargaH+"&sp_horas="+sp_horas);
+      history.pushState(null, "","index.php?sp_Carga_Cat="+sp_cargaH+"&sp_horas="+sp_horas);
+    });
+  });
   function solonumeros(e) {
     key= e.keyCode || e.which;
     teclado = String.fromCharCode(key);
@@ -100,42 +143,22 @@ float: left;
 }
 
 }
+function card(obj){   
+  var objeto = obj.id;
+  var scat = objeto.substr(0, 3);  
+  con = document.getElementsByName(scat);
+  console.log(document.getElementsByName(scat)[0].checked); 
+   if(document.getElementsByName(scat)[0].checked ==false){
+      document.getElementsByName(scat)[1].readOnly = false;
+      document.getElementsByName(scat)[0].checked = true;
+    }else if(document.getElementsByName(scat)[0].checked ==true){
+      document.getElementsByName(scat)[0].checked = false;
+      document.getElementsByName(scat)[1].readOnly = true;
+    }
 
- function comprobar(obj)
- {   
-   //console.log(obj.id);
-   var objeto = obj.id;
-   var scat = objeto.substr(0, 3);
-   //console.log(scat);  
-    if (obj.checked)
-      document.getElementById(scat).readOnly = false;
-    else
-      document.getElementById(scat).readOnly = true;  
+  
+  
+ 
 }
-</script>
-<script>
-$(document).ready(function(){
-  var defalut_sub ="DFG-chk"
-  document.getElementById(defalut_sub).checked =true;
-$(document).on("click", "#btnSiguiente", function(e){
-    e.preventDefault();     
-    var sp_cargaH ='';
-    var sp_horas ='';      
-  for (i=0;i<document.frmCargaHoraria.elements.length;i++){
-      if(document.frmCargaHoraria.elements[i].type == "checkbox"){
-        if (document.frmCargaHoraria.elements[i].checked){
-            var check_obj = document.frmCargaHoraria.elements[i].id;
-            var cat = check_obj.substr(0, 3); 
-                     if(sp_cargaH === ''){
-                        sp_cargaH = cat;
-                      }else{
-                        sp_cargaH +='-' + cat; 
-              }  
-          }
-        }
-      }
-      form('pda/asignacion_actividadc.php?sp_Carga_Cat='+sp_cargaH);
-      history.pushState(null, "","index.php?sp_Carga_Cat="+sp_cargaH);
-    });
-  });
+
 </script>

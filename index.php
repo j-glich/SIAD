@@ -7,15 +7,12 @@
   }else{
     //require_once('layouts/header.php');
     redirect("view/index.php");
-  
 //header('Location: view/index.php');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-
   <section class="content-header">
-
     <h1>
       Dashboard
       <small>Control panel</small>
@@ -27,18 +24,13 @@
     <section id="alerta">
     </section>
   </section>
-
     <!-- Main content -->
     <section class="content">
       <div id="area">
-
       </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-
-
 <?php  require_once ("footer.php");
 } ?>
 

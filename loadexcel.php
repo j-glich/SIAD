@@ -20,7 +20,8 @@ $documento
     ->setCategory('La categoría');
  
 $nombreDelDocumento = 'Mi primer archivo.xlsx';
-
+$sheet = $documento->getActiveSheet();
+$sheet->setCellValue('A1', 'Hello World !');
 //  Los siguientes encabezados son necesarios para que
  // el navegador entienda que no le estamos mandando
  // simple HTML

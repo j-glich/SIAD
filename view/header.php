@@ -38,9 +38,11 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <!--<link href="../public/css/sb_admin_min.css" rel="stylesheet">-->
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  -->
 </head>
 <body class="hold-transition fixed skin-purple sidebar-mini">
 
@@ -60,54 +62,87 @@
     <!-- Header Navbar: style can be found in header.less 
     navbar navbar-expand-lg navbar-dark primary-color
     navbar navbar-static-top -->
+    <!--
     <nav class=" navbar navbar-expand-lg navbar-dark primary-color">
-      <!-- Sidebar toggle button-->
+     Sidebar toggle button-
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
 
-      <div class="navbar-custom-menu">
+      <div class="navbar-custom-menu" s>
         <ul class="nav navbar-nav">
 
-          <!-- Messages: style can be found in dropdown.less-->
+           Messages: style can be found in dropdown.less
           <li class="dropdown messages-menu">
             <a href="../cerrarSesion.php">
               <i class="fa fa-sign-out"></i>
             </a>
 
           </li>
-          <!-- Notifications: style can be found in dropdown.less -->
+           Notifications: style can be found in dropdown.less
 
-          <!-- Tasks: style can be found in dropdown.less -->
+           Tasks: style can be found in dropdown.less 
 
-          <!-- User Account: style can be found in dropdown.less -->
+           User Account: style can be found in dropdown.less 
           <li >
             <a href="#" >
               <?php
-              //define('ruta',$_SERVER['DOCUMENT_ROOT']);
-
-                include_once '../includes/session.php';
-                include_once '../config/conexion.php';
-
-                $session->login('Javier Pérez');
-                $session->usuarioLogeado();
-                $session->tipoUsuario('1');
-                $session->periodo('20213');
-                $session->area('ISC');
-                  if(isset($_SESSION['user_id'])){
+            //    if(isset($_SESSION['user_id'])){
               ?>
-              <span class="hidden-xs"><?php echo $_SESSION['user_id']  ?></span>
-            <?php } ?>
+              <span class="hidden-xs"><?php //echo $_SESSION['user_id']  ?></span>
+            <?php // } ?>
             </a>
 
           </li>
-          <!-- Control Sidebar Toggle Button -->
+          Control Sidebar Toggle Button 
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
-        </ul>
+                
+        </ul>   
       </div>
     </nav>
+  -->  
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+<!-- Sidebar Toggle (Topbar) -->
+<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+  <i class="fa fa-bars"></i>
+</button>         
+<!-- Topbar Navbar -->
+<ul class="navbar-nav ml-auto">
+  <!-- Nav Item - User Information -->
+  <li class="nav-item dropdown no-arrow">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="mr-2 d-none d-lg-inline text-withe-600 small" style=""><?php echo $_SESSION["user_id"];?></span>
+<!--                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
+      <img class="img-profile rounded-circle" style="width: 40px; height: 40px;" src="../public/img/victor.jpg">
+    </a>
+    <!-- Dropdown - User Information -->
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+      <a class="dropdown-item" href="#">
+      <!--   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>-->
+        Perfil
+      </a>
+      <a class="dropdown-item" href="#">
+     <!--    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>-->
+        Configuración 
+      </a>
+      <a class="dropdown-item" href="#">
+       <!-- <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>-->
+        Acerca de 
+      </a>
+      <a class="dropdown-item" href="../cerrarSesion.php">
+     <!--  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
+    <!--   <i class="fa fa-sign-out"></i>-->
+    Cerrar Sesión
+        
+    </a>
+    </div>
+  </li>
+</ul>
+
+</nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -115,7 +150,8 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
             <?php
-                  echo '<ul class="sidebar-menu" data-widget="tree">
+            if($_SESSION['area'] == 'ISC'){  
+              echo '<ul class="sidebar-menu" data-widget="tree">
                   <li class="treeview">
                     <a href="#">
                       <i id="atr" class="fa  fa-chevron-right"></i>
@@ -130,13 +166,60 @@
                   echo '<li><a onclick="form(\''.'pda'.'/'.'subcategoria'.'.php\')" href="#"><i class="fa fa-clone"></i>Subcategorias</a></li>';           
                   echo '<li><a onclick="form(\''.'pda'.'/'.'producto'.'.php\')" href="#"><i class="fa fa-clone"></i>Producto</a></li>';           
                   echo '<li><a onclick="form(\''.'pda'.'/'.'carga_horaria2'.'.php\')" href="#"><i class="fa fa-folder-open"></i>Carga Horaria</a></li>';   
-                  echo '<li><a href="#"><i class="fa fa-address-card"></i>Registro de Actividad</a></li>';         
+                  echo '<li><a href="#"><i class="fa fa-address-card"></i>Registro de Actividad</a></li>';
+                  echo '<li><a href="#"><i class="fa fa-address-card"></i>Seguimiento y evaluación</a></li>';
+                  echo '<li><a onclick="form(\''.'pda'.'/'.'plan_de_trabajo'.'.php\')" href="#"><i class="fa fa-briefcase"></i>Plan de Trabajo</a></li>';            
                 //  echo '<li><a onclick="form(\''.'pda'.'/'.'evaluación'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Evaluación</a></li>';           
                 //  echo '<li><a onclick="form(\''.'pda'.'/'.'cierre_evaluacion'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Subcaterorias</a></li>';
                 //  echo '<li><a onclick="form(\''.'pda'.'/'.'entrega_evidencia'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Entrega de evidencias</a></li>';              
                  // echo '<li><a onclick="form(\''.'pda'.'/'.'constancia_cumplimiento'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
                   //echo '<li><a onclick="form(\''.'pda'.'/'.'generar_pda_8'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
-                  
+            }else if($_SESSION['area'] == 'DOC'){
+              echo '<ul class="sidebar-menu" data-widget="tree">
+              <li class="treeview">
+                <a href="#">
+                  <i id="atr" class="fa  fa-chevron-right"></i>
+                  <span>Productos &nbsp&nbsp&nbsp'.$_SESSION['area'].'</span>
+                  <span class="pull-right-container">
+                    <span class="label label-primary pull-right"></span>
+                  </span>
+                </a>
+                <ul class="treeview-menu">';
+              echo '<li><a href="#"><i class="fa fa-briefcase"></i>PTareas</a></li>';              
+             // echo '<li><a href="#"><i class="fa fa-clone"></i>Categorías</a></li>';              
+            //echo '<li><a href="#"><i class="fa fa-clone"></i>Subcategorias</a></li>';           
+            //  echo '<li><a href="#"><i class="fa fa-clone"></i>Producto</a></li>';           
+              //echo '<li><a href="#"><i class="fa fa-folder-open"></i>Carga Horaria</a></li>';   
+             // echo '<li><a href="#"><i class="fa fa-address-card"></i>Registro de Actividad</a></li>';         
+            } 
+            ?>
+              
+          </ul>
+          
+        </li>
+        </ul>
+        
+        <?php
+            if($_SESSION['area'] == 'ISC'){  
+              echo '<ul class="sidebar-menu" data-widget="tree">
+                  <li class="treeview">
+                    <a style="font-size: 10px;" href="#">
+                      <i id="atr" class="fa  fa-chevron-right"></i>
+                      <span>Seguimiento y Evaluación PDA &nbsp&nbsp&nbsp'.$_SESSION['area'].'</span>
+                      <span class="pull-right-container">
+                        <span class="label label-primary pull-right"></span>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">';
+                  echo '<li><a onclick="form(\''.'pda'.'/'.''.'.php\')" href="#"><i class="fa fa-clone"></i>Segimiento</a></li>';              
+                  echo '<li><a onclick="form(\''.'pda'.'/'.''.'.php\')" href="#"><i class="fa fa-clone"></i>Evaluación</a></li>';              
+                 
+                //  echo '<li><a onclick="form(\''.'pda'.'/'.'evaluación'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Evaluación</a></li>';           
+                //  echo '<li><a onclick="form(\''.'pda'.'/'.'cierre_evaluacion'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Subcaterorias</a></li>';
+                //  echo '<li><a onclick="form(\''.'pda'.'/'.'entrega_evidencia'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Entrega de evidencias</a></li>';              
+                 // echo '<li><a onclick="form(\''.'pda'.'/'.'constancia_cumplimiento'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>';
+                  //echo '<li><a onclick="form(\''.'pda'.'/'.'generar_pda_8'.'.php\')" href="#"><i class="fa fa-circle-o"></i>Constancia Cumplimiento</a></li>'; 
+            } 
             ?>
               
           </ul>

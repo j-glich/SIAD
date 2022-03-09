@@ -5,6 +5,7 @@ try {
   } catch (\Exception $e) {
     require_once("../config/conexion.php");
   }
+
   switch ($opcion) {
     case '1':
       $ip_adress= $_SERVER['REMOTE_ADDR'];
@@ -16,6 +17,24 @@ try {
       $stmt= "call sp_in_carga_actividad_x_scat('$carga', '$clave_docente', '$periodo',$user,'$ip_adress')";
      //echo $stmt;
       execQuery($stmt);
+    break;
+    case '2':
+      $ip_adress= $_SERVER['REMOTE_ADDR'];
+      if($ip_adress=='::1')
+        $ip_adress="127.0.0.1";
+      //Actualizar el valor del usuario tomando el valor de la sesión
+        $user=200;
+        $stmt= "call sp_in_carga_pr_especifico('$cve_subcat', '$evidencia', '$desc_producto','$ip_adress','$user','$dias_entrega','$hrs_producto')";
+        $result = execQuery($stmt);
+         //echo '***'.$result -> num_rows;
+        
+  //$product_especifico= array('clave'=>'','titulo'=>'','desc'=>'');
+        foreach( $result as $row){
+          $product_especifico[]=$row;
+  }
+  //$result->free();
+     //echo $stmt;
+     print json_encode($product_especifico, JSON_UNESCAPED_UNICODE);
     break;
   }
   function mAddActividad($cve_docente, $cve_pr){
@@ -81,8 +100,10 @@ function liProductoXClave($clave){
     $result = execQuery($stmt);
     $productos = array();
     foreach( $result as $row){
-       $productos[]=array('categoría'=>$row['CAT_CVE'],'clave'=>$row["SCAT_CVE"],'titulo'=>$row["PR_TITULO"],'desc'=>$row["PR_DESCRIPCION"]);
+       $productos[]=array('categoría'=>$row['CAT_TITULO'],'clave'=>$row["SCAT_CVE"],'default'=>$row['PR_DEFAULT'],'titulo'=>$row["PR_TITULO"],'desc'=>$row["PR_DESCRIPCION"]);
     }
     return $productos;
   }
+
+ 
 ?>

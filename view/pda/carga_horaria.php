@@ -14,7 +14,7 @@
 //}
 
 //$p = getIfSet($_REQUEST['p']);
-$docentes = listar_docentes();
+//$docentes = listar_docentes();
 $datos= listar_subcategoria();
 ?>
 <div id="cargahoraria" class="box box-solid">

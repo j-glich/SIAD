@@ -43,11 +43,16 @@ function execProcedurePeek($stmt,$level){
   function execQuery($sql){
     global $conexion;
     try {    
-      $result=$conexion->query($sql);
-      while($row = $result->fetch_assoc()){
+      $result=$conexion->query($sql);     
+      if($result == '1'){
+        echo 'Soy un error';
+      }else{
+        
+        while($row = $result->fetch_assoc()){
         $new_array[] = $row; // Inside while loop
       }
       return $new_array; 
+      }
 
     } catch (Exception $e) {
       echo $e->getMessage();

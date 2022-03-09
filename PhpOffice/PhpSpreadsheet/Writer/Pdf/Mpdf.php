@@ -14,10 +14,7 @@ class Mpdf extends Pdf
      *
      * @return \Mpdf\Mpdf implementation
      */
-    protected function createExternalWriterInstance($config)
-    {
-        return new \Mpdf\Mpdf($config);
-    }
+
 
     /**
      * Save Spreadsheet to file.
